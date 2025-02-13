@@ -9,14 +9,44 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+// prisma/schema.prisma
 
-model Task {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  completed Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model User {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  email       String    @unique
+  password    String
+  name        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  listings    Part[]    @relation("UserListings")
+}
+
+model Part {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  price       Float
+  condition   String    // New, Used - Like New, Used - Good, Used - Fair
+  location    String
+  imageUrls   String[]
+  sellerId    String    @db.ObjectId
+  seller      User      @relation("UserListings", fields: [sellerId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Additional fields
+  brand       String?
+  model       String?
+  year        String?
+  partNumber  String?
+  category    String
+  status      String    @default("available") // available, sold, reserved
 }
