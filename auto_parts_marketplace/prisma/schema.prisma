@@ -4,49 +4,36 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {
-  provider = "prisma-client-js"
-}
-
+// prisma/schema.prisma
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-// prisma/schema.prisma
 
 generator client {
   provider = "prisma-client-js"
 }
 
-
 model User {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  email       String    @unique
-  password    String
-  name        String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  listings    Part[]    @relation("UserListings")
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  parts         Part[]    @relation("UserParts")
 }
 
 model Part {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(cuid())
   title       String
   description String
   price       Float
-  condition   String    // New, Used - Like New, Used - Good, Used - Fair
-  location    String
-  imageUrls   String[]
-  sellerId    String    @db.ObjectId
-  seller      User      @relation("UserListings", fields: [sellerId], references: [id])
+  condition   String    // 'new' | 'used' | 'refurbished'
+  category    String
+  images      String[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  
-  // Additional fields
-  brand       String?
-  model       String?
-  year        String?
-  partNumber  String?
-  category    String
-  status      String    @default("available") // available, sold, reserved
+  seller      User      @relation("UserParts", fields: [sellerId], references: [id])
+  sellerId    String
 }
