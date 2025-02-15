@@ -1,4 +1,3 @@
-import LoginForm from '@/components/forms/LoginForm'
 
 export default function LoginPage() {
   return (
@@ -9,7 +8,7 @@ export default function LoginPage() {
             Sign in to your account
           </h2>
         </div>
-        <LoginForm />
       </div>
     </div>
   )
+}
