@@ -1,3 +1,4 @@
+// app/layout.tsx
 import { Inter } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -16,9 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-white`}>
         <Header />
-        <main className="min-h-screen px-4 py-8">
+        <main className="min-h-screen px-4 py-8 max-w-7xl mx-auto">
           {children}
         </main>
         <Footer />

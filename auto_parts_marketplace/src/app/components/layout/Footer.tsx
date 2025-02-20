@@ -1,39 +1,45 @@
+// components/layout/Footer.tsx
+import React from 'react';
 import Link from 'next/link';
-export default function Footer() {
-    return (
-      <footer className="bg-gray-100 border-t">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="font-bold mb-4">About Us</h3>
-              <p className="text-gray-600">
-                AutoParts Marketplace connects buyers and sellers of quality automotive parts.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><Link href="/about">About</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/terms">Terms of Service</Link></li>
-                <li><Link href="/privacy">Privacy Policy</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Contact</h3>
-              <ul className="space-y-2">
-                <li>Email: support@autoparts.com</li>
-                <li>Phone: (555) 123-4567</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-8 pt-8 border-t text-center text-gray-600">
-            <p>&copy; {new Date().getFullYear()} AutoParts Marketplace. All rights reserved.</p>
+
+const Footer = () => {
+  return (
+    <footer className="p-6 mt-12 border-t border-gray-200">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+          <nav>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/about" className="text-purple-700 hover:text-purple-900">About</Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-purple-700 hover:text-purple-900">Contact</Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-purple-700 hover:text-purple-900">Terms of Service</Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-purple-700 hover:text-purple-900">Privacy Policy</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        
+        <div>
+          <h3 className="text-xl font-bold mb-4">Contact</h3>
+          <div className="space-y-2">
+            <p>Email: support@autoparts.com</p>
+            <p>Phone: (555) 123-4567</p>
           </div>
         </div>
-      </footer>
-    )
-  }
+      </div>
+      
+      <p className="text-sm text-gray-600 mt-8">
+        © 2025 AutoParts Marketplace. All rights reserved.
+      </p>
+    </footer>
+  );
+};
+
+export default Footer;
