@@ -1,10 +1,9 @@
-"use client";
+"use client"; // Important for client-side interactivity
 
 import { useState } from "react";
 
-export default function RegistrationForm() {
+export default function SignInForm() {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -13,15 +12,16 @@ export default function RegistrationForm() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      const res = await fetch("/api/auth/register", {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -30,7 +30,9 @@ export default function RegistrationForm() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      alert("Account created successfully! You can now log in.");
+      alert("Login successful!");
+      // Redirect user (optional)
+      window.location.href = "/dashboard"; // Change to your desired page
     } catch (err: any) {
       setError(err.message);
     }
@@ -40,18 +42,6 @@ export default function RegistrationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
-      <div className="mb-4">
-        <label className="block text-gray-700">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border rounded"
-        />
-      </div>
-
       <div className="mb-4">
         <label className="block text-gray-700">Email</label>
         <input
@@ -83,7 +73,7 @@ export default function RegistrationForm() {
         className="bg-blue-600 text-white py-2 px-4 rounded w-full"
         disabled={loading}
       >
-        {loading ? "Registering..." : "Sign Up"}
+        {loading ? "Signing in..." : "Sign In"}
       </button>
     </form>
   );
