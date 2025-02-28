@@ -1,35 +1,36 @@
-import Link from 'next/link'
-import { Search } from 'lucide-react'
+// components/layout/Header.tsx
+import React from 'react';
+import { Search } from 'lucide-react';
+import Link from 'next/link';
 
-export default function Header() {
+const Header = () => {
   return (
-    <header className="border-b border-gray-300">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold">
-          AutoParts Market
-        </Link>
-        
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <input
-              type="search"
-              placeholder="Search parts..."
-              className="pl-10 pr-4 py-2 border rounded-lg"
-              ariel-label="Search parts"
-            />
-            <Search 
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-blue-600"
-            size={20}
-            />
-          </div>
-          
-          <nav className="space-x-4">
-            <Link href="/parts" className="hover:text-blue-600">Browse</Link>
-            <Link href="/sell" className="hover:text-blue-600">Sell</Link>
-            <Link href="/login" className="hover:text-blue-600">Login</Link>
-          </nav>
+    <header className="p-6">
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-xl font-bold text-purple-700">
+          <Link href="/" className="hover:text-purple-900">
+            AutoParts Market
+          </Link>
+        </h1>
+        <div className="flex space-x-2">
+          <Link href="/parts" className="text-purple-700 hover:text-purple-900">Browse</Link>
+          <Link href="/sell" className="text-purple-700 hover:text-purple-900">Sell</Link>
+          <Link href="/login" className="text-purple-700 hover:text-purple-900">Login</Link>
         </div>
       </div>
+      
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search parts..."
+          className="w-full md:w-64 px-4 py-2 border border-gray-300 rounded"
+        />
+        <button className="absolute right-2 top-2 text-gray-500 hover:text-gray-700">
+          <Search size={20} />
+        </button>
+      </div>
     </header>
-  )
-}
+  );
+};
+
+export default Header;
