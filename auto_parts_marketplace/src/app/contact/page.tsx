@@ -1,7 +1,7 @@
 export default function ContactPage() {
     return (
         <main className="p-8">
-            <h1 className="text-2x1 font-bold">About Us</h1>
+            <h1 className="text-2x1 font-bold">Contact Us</h1>
             <p>Have questions? Please reach out to us.</p>
 
             <div className="mt-6">

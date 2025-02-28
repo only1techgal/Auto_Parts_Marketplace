@@ -1,19 +1,19 @@
-export default function PrivacyPolicy() {
+export default function PrivacyPolicyPage() {
     return (
-    <main className="p-8">
-        <h1 className="text-2x1 font-bold">Privacy Policy</h1>
-        <p className="mt-4">Your privacy is important to us. This policy explains how we collect and use your data.</p>
-
-        <section className="mt-6">
-            <h2 className="text-x1 font-semibold">1. Data We Collect</h2>
-            <p>We collect personal information such as your name, email and payment details.</p>
-
-            <h2 className="text-x1 font-semibold mt-4">2. How We Use Your Data</h2>
-            <p>We use your data to provide services, process transactions and improve our platform.</p>
+      <div className="min-h-screen px-6 py-12 max-w-3xl mx-auto text-gray-800">
+        <h1 className="text-3xl font-bold mb-6 text-center">Privacy Policy</h1>
         
-            <h2 className="text-x1 font-semibold mt-4">3. Cookies and Tracking</h2>
-            <p>We use cookies to enhace your experience. You can disable cookies in your browser settings.</p>
-        </section>
-    </main>
+        <p className="mb-4">Your privacy is important to us. This policy explains how we collect and use your data.</p>
+        
+        <h2 className="text-xl font-semibold mt-6">1. Data We Collect</h2>
+        <p className="mb-4">We collect personal information such as your name, email, and payment details.</p>
+  
+        <h2 className="text-xl font-semibold mt-6">2. How We Use Your Data</h2>
+        <p className="mb-4">We use your data to provide services, process transactions, and improve our platform.</p>
+  
+        <h2 className="text-xl font-semibold mt-6">3. Cookies and Tracking</h2>
+        <p className="mb-4">We use cookies to enhance your experience. You can disable cookies in your browser settings.</p>
+      </div>
     );
-}
+  }
+  
